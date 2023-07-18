@@ -93,7 +93,7 @@ class Map:
         self._mapType = type
 
         self._NIST_generalisation = True
-        
+
         # set the mapping list
         if self._mapType==0:
             self._dataMap = ISO13toNIST
@@ -144,13 +144,15 @@ class Map:
         for i in range(lines):
             data[i][1] = data[i][1].split(',')
 
+
+
         if self._NIST_generalisation:
             for i in range(len(data)):
                 for j in range(len(data[i][1])):
                     #print(data[i][1][j], re.sub(r"\([0-9]+\)","",data[i][1][j]))
                     data[i][1][j] = re.sub(r"\([0-9]+\)","",data[i][1][j])
                     # remove potential duplicates
-                    data[i][1] = list(dict.fromkeys(data[i][1]))
+                data[i][1] = list(dict.fromkeys(data[i][1]))
 
         return data
     
